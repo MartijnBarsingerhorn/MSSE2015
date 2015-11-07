@@ -1,0 +1,5 @@
+success: "class public a : Integer; end"
+success: "class a : Integer; end"
+success: "class public  end"
+success: "class end"
+success: "class public public private protected published a : Integer; end"

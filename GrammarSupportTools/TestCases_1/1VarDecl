@@ -1,0 +1,5 @@
+success: "a,b,c : Cardinal;" 
+success: "a,b,c : TObjec deprecated = 10;"
+success: "a,b,c : TObjec deprecated;"
+success: "a,b,c : TObjec;"
+success: "a,b:Integer;"    

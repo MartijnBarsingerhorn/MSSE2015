@@ -1,0 +1,284 @@
+<html>
+
+							<head>
+
+								<title>Delphi Code Slice: start line: 4982 vars: ["scenrec","scenariodb","irec"] </title>
+
+							</head>
+
+							<body>
+
+							<p><b>Delphi Code Slice: start line: 4982 vars: ["scenrec","scenariodb","irec"]</b><br></p>
+							<table width="100%">
+
+							<tr id="SliceElement_0"><th>&nbsp;</th><th ><a href="#SliceElement_1">Next</a></th><th>&nbsp;</th></tr>
+	<tr><th>&nbsp;</th><td>&nbsp;</td><td><font size="3" color="grey">&nbsp;<hr></font><br></td></tr>
+	<tr id="SliceElement_1"><th>4491:</th><td><a href="#SliceElement_0">Prev</a> - <a href="#SliceElement_2">Next</a></td>
+																						   <td><b><font color='orange'>function tquirtpatient.getnextimageid(incdb : boolean = false; referenceimage: boolean = false): integer;</font></b><br></td></tr>
+	<tr><th>4492:</th><td>&nbsp;</td><td><font size="3" color="grey">var</font><br></td></tr>
+	<tr><th>4493:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;mt_db, imid, mt_rec, n, columnnr &nbsp; &nbsp;: integer;</font><br></td></tr>
+	<tr><th>4494:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;tmp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : string;</font><br></td></tr>
+	<tr><th>4495:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;success &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : boolean;</font><br></td></tr>
+	<tr><th>4496:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4497:</th><td>&nbsp;</td><td><font size="3" color="grey">begin</font><br></td></tr>
+	<tr id="SliceElement_2"><th>4498:</th><td><a href="#SliceElement_1">Prev</a> - <a href="#SliceElement_3">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;try</font></b><br></td></tr>
+	<tr><th>4499:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;dbf_open(mt_db, fqe.patmtechdbname,true);</font><br></td></tr>
+	<tr><th>4500:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;except</font><br></td></tr>
+	<tr id="SliceElement_3"><th>4501:</th><td><a href="#SliceElement_2">Prev</a> - <a href="#SliceElement_4">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;mt_db := -1;</font></b><br></td></tr>
+	<tr><th>4502:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4503:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_4"><th>4504:</th><td><a href="#SliceElement_3">Prev</a> - <a href="#SliceElement_5">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;if mt_db = -1 then</font></b><br></td></tr>
+	<tr><th>4505:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;begin</font><br></td></tr>
+	<tr><th>4506:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;ferrors.add('cannot open patmtech database.');</font><br></td></tr>
+	<tr><th>4507:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;try</font><br></td></tr>
+	<tr><th>4508:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_close(mt_db);</font><br></td></tr>
+	<tr><th>4509:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;except</font><br></td></tr>
+	<tr><th>4510:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4511:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;</font><br></td></tr>
+	<tr id="SliceElement_5"><th>4512:</th><td><a href="#SliceElement_4">Prev</a> - <a href="#SliceElement_6">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;result := -1;</font></b><br></td></tr>
+	<tr><th>4513:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;exit;</font><br></td></tr>
+	<tr><th>4514:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4515:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4516:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// if we seek the next image id for a reference image (referenceimage = true)</font><br></td></tr>
+	<tr><th>4517:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// then we should look in the 9th column. if it is a portal image, then we</font><br></td></tr>
+	<tr><th>4518:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// should look in the 8th column.</font><br></td></tr>
+	<tr id="SliceElement_6"><th>4519:</th><td><a href="#SliceElement_5">Prev</a> - <a href="#SliceElement_7">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;if(referenceimage) then</font></b><br></td></tr>
+	<tr id="SliceElement_7"><th>4520:</th><td><a href="#SliceElement_6">Prev</a> - <a href="#SliceElement_8">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;columnnr := 9</font></b><br></td></tr>
+	<tr id="SliceElement_8"><th>4521:</th><td><a href="#SliceElement_7">Prev</a> - <a href="#SliceElement_9">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;else columnnr := 8;</font></b><br></td></tr>
+	<tr><th>4522:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_9"><th>4523:</th><td><a href="#SliceElement_8">Prev</a> - <a href="#SliceElement_10">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;try</font></b><br></td></tr>
+	<tr><th>4524:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;dbquery(mt_db, '"", "'+fpatientid+'"', 0, 0, mt_rec);</font><br></td></tr>
+	<tr><th>4525:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_10"><th>4526:</th><td><a href="#SliceElement_9">Prev</a> - <a href="#SliceElement_11">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp;if (mt_rec &gt;= 0) then</font></b><br></td></tr>
+	<tr><th>4527:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr><th>4528:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_lock (mt_db, mt_rec, 1, true);</font><br></td></tr>
+	<tr><th>4529:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_read_field(tmp, mt_db, mt_rec, columnnr);</font><br></td></tr>
+	<tr id="SliceElement_11"><th>4530:</th><td><a href="#SliceElement_10">Prev</a> - <a href="#SliceElement_12">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp;imid := strtoint(tmp);</font></b><br></td></tr>
+	<tr><th>4531:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4532:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// portal images are allowed to have numbers as high as 994. reference</font><br></td></tr>
+	<tr><th>4533:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// images are only allowed to go as far as 94. if we have reached any</font><br></td></tr>
+	<tr><th>4534:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// of these two limits, do not increase the value in the database (when</font><br></td></tr>
+	<tr><th>4535:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// needed) and procedure an error.</font><br></td></tr>
+	<tr id="SliceElement_12"><th>4536:</th><td><a href="#SliceElement_11">Prev</a> - <a href="#SliceElement_13">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp; &nbsp;if (((not referenceimage) and (imid &lt; 995)) or</font></b><br></td></tr>
+	<tr id="SliceElement_13"><th>4537:</th><td><a href="#SliceElement_12">Prev</a> - <a href="#SliceElement_14">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;((referenceimage) and (imid &lt; 95))) then</font></b><br></td></tr>
+	<tr><th>4538:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr id="SliceElement_14"><th>4539:</th><td><a href="#SliceElement_13">Prev</a> - <a href="#SliceElement_15">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp; &nbsp; &nbsp;if incdb then</font></b><br></td></tr>
+	<tr><th>4540:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr id="SliceElement_15"><th>4541:</th><td><a href="#SliceElement_14">Prev</a> - <a href="#SliceElement_16">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n := 0;</font></b><br></td></tr>
+	<tr><th>4542:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;redirectmessages('nul');</font><br></td></tr>
+	<tr><th>4543:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4544:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;repeat</font><br></td></tr>
+	<tr><th>4545:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (n &gt; 30) then redirectmessages('');</font><br></td></tr>
+	<tr><th>4546:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4547:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;try</font><br></td></tr>
+	<tr><th>4548:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// choose the format according to the type of image id</font><br></td></tr>
+	<tr><th>4549:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(not referenceimage) then</font><br></td></tr>
+	<tr><th>4550:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;dbf_write_field(format('%.3d',[imid+1]), mt_db, mt_rec, columnnr)</font><br></td></tr>
+	<tr><th>4551:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;else dbf_write_field(format('%.2d',[imid+1]), mt_db, mt_rec, columnnr);</font><br></td></tr>
+	<tr><th>4552:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4553:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;success := true;</font><br></td></tr>
+	<tr><th>4554:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;except</font><br></td></tr>
+	<tr><th>4555:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;success := false;</font><br></td></tr>
+	<tr><th>4556:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (n &gt; 30) then raise;</font><br></td></tr>
+	<tr><th>4557:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sleep(100);</font><br></td></tr>
+	<tr><th>4558:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4559:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4560:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;inc(n);</font><br></td></tr>
+	<tr><th>4561:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;until success;</font><br></td></tr>
+	<tr><th>4562:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4563:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;redirectmessages('');</font><br></td></tr>
+	<tr><th>4564:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4565:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_16"><th>4566:</th><td><a href="#SliceElement_15">Prev</a> - <a href="#SliceElement_17">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp;result := imid;</font></b><br></td></tr>
+	<tr><th>4567:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;end</font><br></td></tr>
+	<tr><th>4568:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;else</font><br></td></tr>
+	<tr><th>4569:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr><th>4570:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp;ferrors.add('no more image numbers available. cannot save image.');</font><br></td></tr>
+	<tr id="SliceElement_17"><th>4571:</th><td><a href="#SliceElement_16">Prev</a> - <a href="#SliceElement_18">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp;result := -1;</font></b><br></td></tr>
+	<tr><th>4572:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4573:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4574:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_lock (mt_db, mt_rec, 1, false);</font><br></td></tr>
+	<tr><th>4575:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;end</font><br></td></tr>
+	<tr><th>4576:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;else</font><br></td></tr>
+	<tr><th>4577:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr><th>4578:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;ferrors.add('patient id not found in patmtech database.');</font><br></td></tr>
+	<tr id="SliceElement_18"><th>4579:</th><td><a href="#SliceElement_17">Prev</a> - <a href="#SliceElement_19">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp;result := -1;</font></b><br></td></tr>
+	<tr><th>4580:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4581:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;except</font><br></td></tr>
+	<tr><th>4582:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;ferrors.add('unknown patmtech database interaction error.');</font><br></td></tr>
+	<tr id="SliceElement_19"><th>4583:</th><td><a href="#SliceElement_18">Prev</a> - <a href="#SliceElement_20">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;result := -1;</font></b><br></td></tr>
+	<tr><th>4584:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4585:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4586:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;dbf_close(mt_db);</font><br></td></tr>
+	<tr><th>4587:</th><td>&nbsp;</td><td><font size="3" color="grey">end;</font><br></td></tr>
+	<tr><th>&nbsp;</th><td>&nbsp;</td><td><font size="3" color="grey">&nbsp;<hr></font><br></td></tr>
+	<tr id="SliceElement_20"><th>4873:</th><td><a href="#SliceElement_19">Prev</a> - <a href="#SliceElement_21">Next</a></td>
+																						   <td><b><font color='red'>function tquirtpatient.savereferenceimage(refimg: treferenceimage): boolean;</font></b><br></td></tr>
+	<tr><th>4874:</th><td>&nbsp;</td><td><font size="3" color="grey">var</font><br></td></tr>
+	<tr><th>4875:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;nextimageid, referencedb, scenariodb, irec : integer;</font><br></td></tr>
+	<tr><th>4876:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;fileextensiondrr, fileextensionstr, drrfileheader, filename : string;</font><br></td></tr>
+	<tr><th>4877:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;scenrec : tavsfield;</font><br></td></tr>
+	<tr><th>4878:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4879:</th><td>&nbsp;</td><td><font size="3" color="grey">begin</font><br></td></tr>
+	<tr><th>4880:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;result := false;</font><br></td></tr>
+	<tr><th>4881:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;if(refimg = nil) then exit;</font><br></td></tr>
+	<tr><th>4882:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;if(refimg.beam = nil) then exit;</font><br></td></tr>
+	<tr><th>4883:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;if(environment = nil) then exit;</font><br></td></tr>
+	<tr><th>4884:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4885:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// attempt to get the nextrefimage id from the reference database; ask</font><br></td></tr>
+	<tr><th>4886:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// getnextimageid to increase the counter, and to fetch a reference image</font><br></td></tr>
+	<tr><th>4887:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// number (not a portal image number!).</font><br></td></tr>
+	<tr id="SliceElement_21"><th>4888:</th><td><a href="#SliceElement_20">Prev</a> - <a href="#SliceElement_22">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;nextimageid := getnextimageid(true, true);</font></b><br></td></tr>
+	<tr><th>4889:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;if(nextimageid = -1) then begin</font><br></td></tr>
+	<tr><th>4890:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;ferrors.add('could not save the drr for beam ''' + string(refimg.beam.beamname) + '''.'#13#13' the maximum number of 95 drrs for this patient has been reached.');</font><br></td></tr>
+	<tr><th>4891:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;refimg.beam.refid := 0;</font><br></td></tr>
+	<tr><th>4892:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;exit;</font><br></td></tr>
+	<tr><th>4893:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4894:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4895:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// create the r01, s01, r02, s02, etc, file-extension for the drr file</font><br></td></tr>
+	<tr id="SliceElement_22"><th>4896:</th><td><a href="#SliceElement_21">Prev</a> - <a href="#SliceElement_23">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;fileextensiondrr &nbsp; := format('r%0.2d', [nextimageid]);</font></b><br></td></tr>
+	<tr id="SliceElement_23"><th>4897:</th><td><a href="#SliceElement_22">Prev</a> - <a href="#SliceElement_24">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;fileextensionstr &nbsp; := format('s%0.2d', [nextimageid]);</font></b><br></td></tr>
+	<tr id="SliceElement_24"><th>4898:</th><td><a href="#SliceElement_23">Prev</a> - <a href="#SliceElement_25">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;refimg.beam.refid &nbsp;:= nextimageid;</font></b><br></td></tr>
+	<tr><th>4899:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4900:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// put the drr file extension into the reference image</font><br></td></tr>
+	<tr><th>4901:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;refimg.drrext := fileextensiondrr;</font><br></td></tr>
+	<tr><th>4902:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4903:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// create the header for the mbi drr file</font><br></td></tr>
+	<tr id="SliceElement_25"><th>4904:</th><td><a href="#SliceElement_24">Prev</a> - <a href="#SliceElement_26">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;drrfileheader := &nbsp;'version=' &nbsp; + qversion + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_26"><th>4905:</th><td><a href="#SliceElement_25">Prev</a> - <a href="#SliceElement_27">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'patient_id='+ string(patientid) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_27"><th>4906:</th><td><a href="#SliceElement_26">Prev</a> - <a href="#SliceElement_28">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'image_id=' &nbsp;+ string(fileextensiondrr) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_28"><th>4907:</th><td><a href="#SliceElement_27">Prev</a> - <a href="#SliceElement_29">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'date=' &nbsp; &nbsp; &nbsp;+ formatdatetime('yymmdd', date) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_29"><th>4908:</th><td><a href="#SliceElement_28">Prev</a> - <a href="#SliceElement_30">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'time=' &nbsp; &nbsp; &nbsp;+ formatdatetime('hhnnss', time) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_30"><th>4909:</th><td><a href="#SliceElement_29">Prev</a> - <a href="#SliceElement_31">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'cal_setid=' + 'drr' + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_31"><th>4910:</th><td><a href="#SliceElement_30">Prev</a> - <a href="#SliceElement_32">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'field_id=' &nbsp;+ refimg.beam.fieldid + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_32"><th>4911:</th><td><a href="#SliceElement_31">Prev</a> - <a href="#SliceElement_33">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'mch_namcod='+ string(refimg.beam.acqmodeid) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_33"><th>4912:</th><td><a href="#SliceElement_32">Prev</a> - <a href="#SliceElement_34">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'adt=' &nbsp; &nbsp; &nbsp; + refimg.createadtstring() + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_34"><th>4913:</th><td><a href="#SliceElement_33">Prev</a> - <a href="#SliceElement_35">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'bnm=' &nbsp; &nbsp; &nbsp; + string(refimg.beam.beamname) + &nbsp; chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_35"><th>4914:</th><td><a href="#SliceElement_34">Prev</a> - <a href="#SliceElement_36">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'comment=' &nbsp; + refimg.comment + ' &nbsp;' + &nbsp;refimg.drrparams + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_36"><th>4915:</th><td><a href="#SliceElement_35">Prev</a> - <a href="#SliceElement_37">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'beamdata=' &nbsp;+ refimg.beam.beamtobeamdata() + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_37"><th>4916:</th><td><a href="#SliceElement_36">Prev</a> - <a href="#SliceElement_38">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'orient=' &nbsp; &nbsp;+ refimg.patientorientation + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_38"><th>4917:</th><td><a href="#SliceElement_37">Prev</a> - <a href="#SliceElement_39">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'upi=' &nbsp; &nbsp; &nbsp; + string(refimg.beam.upi) + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_39"><th>4918:</th><td><a href="#SliceElement_38">Prev</a> - <a href="#SliceElement_40">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'pdt=' &nbsp; &nbsp; &nbsp; + refimg.plandate + chr(13) + chr(10) +</font></b><br></td></tr>
+	<tr id="SliceElement_40"><th>4919:</th><td><a href="#SliceElement_39">Prev</a> - <a href="#SliceElement_41">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'ptm=' &nbsp; &nbsp; &nbsp; + refimg.plantime + chr(13) + chr(10);</font></b><br></td></tr>
+	<tr><th>4920:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_41"><th>4921:</th><td><a href="#SliceElement_40">Prev</a> - <a href="#SliceElement_42">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;try</font></b><br></td></tr>
+	<tr id="SliceElement_42"><th>4922:</th><td><a href="#SliceElement_41">Prev</a> - <a href="#SliceElement_43">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;filename := environment.maindir + 'images\' + patientid + '\' + patientid + '.' + fileextensiondrr;</font></b><br></td></tr>
+	<tr><th>4923:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;write_mbi(refimg.drrfield, nil, filename, drrfileheader);</font><br></td></tr>
+	<tr><th>4924:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;except</font><br></td></tr>
+	<tr><th>4925:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;ferrors.add('could not write drr file ''' + filename + '''');</font><br></td></tr>
+	<tr><th>4926:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;exit;</font><br></td></tr>
+	<tr><th>4927:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4928:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4929:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// try to write the structure file (&lt;patientid&gt;.sxx)</font><br></td></tr>
+	<tr id="SliceElement_43"><th>4930:</th><td><a href="#SliceElement_42">Prev</a> - <a href="#SliceElement_44">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;try</font></b><br></td></tr>
+	<tr id="SliceElement_44"><th>4931:</th><td><a href="#SliceElement_43">Prev</a> - <a href="#SliceElement_45">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp; &nbsp;filename := environment.maindir + 'images\' + patientid + '\' + patientid + '.' + fileextensionstr;</font></b><br></td></tr>
+	<tr><th>4932:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;write_mbistruct(refimg.dots, refimg.idx, refimg.lut, filename);</font><br></td></tr>
+	<tr><th>4933:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;except</font><br></td></tr>
+	<tr><th>4934:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;ferrors.add('could not write file ''' + filename + '');</font><br></td></tr>
+	<tr><th>4935:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;exit;</font><br></td></tr>
+	<tr><th>4936:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4937:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4938:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// now update the relevant image database files</font><br></td></tr>
+	<tr><th>4939:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;try</font><br></td></tr>
+	<tr><th>4940:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;try</font><br></td></tr>
+	<tr><th>4941:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// reference db</font><br></td></tr>
+	<tr><th>4942:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_open(referencedb, fqe.referencdbname, true);</font><br></td></tr>
+	<tr><th>4943:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbappend(referencedb,</font><br></td></tr>
+	<tr><th>4944:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; qversion + ', "' +</font><br></td></tr>
+	<tr><th>4945:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string(patientid) + '", "' +</font><br></td></tr>
+	<tr><th>4946:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string(fileextensiondrr) + '", "' +</font><br></td></tr>
+	<tr><th>4947:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; formatdatetime('yymmdd', date) + '", "' +</font><br></td></tr>
+	<tr><th>4948:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; formatdatetime('hhnnss', time) + '", ' +</font><br></td></tr>
+	<tr><th>4949:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string(refimg.beam.acqmodeid) + ', ' +</font><br></td></tr>
+	<tr><th>4950:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; inttostr(refimg.beam.procid) + ', ' +</font><br></td></tr>
+	<tr><th>4951:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '"drr", ' +</font><br></td></tr>
+	<tr><th>4952:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; refimg.beam.fieldid + ', ' +</font><br></td></tr>
+	<tr><th>4953:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ',' +</font><br></td></tr>
+	<tr><th>4954:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '"002", ' +</font><br></td></tr>
+	<tr><th>4955:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '"' + string(refimg.beam.acqmodeid[1]) + '"');</font><br></td></tr>
+	<tr><th>4956:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;result := true;</font><br></td></tr>
+	<tr><th>4957:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;except</font><br></td></tr>
+	<tr><th>4958:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;ferrors.add('could not append record to database ' + fqe.referencdbname + ' after writing drr for field ' + refimg.beam.fieldid + ' and patient ' + string(fpatientid));</font><br></td></tr>
+	<tr><th>4959:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4960:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;finally</font><br></td></tr>
+	<tr><th>4961:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;dbf_close(referencedb);</font><br></td></tr>
+	<tr><th>4962:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4963:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4964:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;// when adding field to the reference images database failed, exit</font><br></td></tr>
+	<tr><th>4965:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;if(not result) then exit;</font><br></td></tr>
+	<tr><th>4966:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_45"><th>4967:</th><td><a href="#SliceElement_44">Prev</a> - <a href="#SliceElement_46">Next</a></td>
+																						   <td><b><font color='orange'> &nbsp;scenrec := tavsfield.create;</font></b><br></td></tr>
+	<tr><th>4968:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr id="SliceElement_46"><th>4969:</th><td><a href="#SliceElement_45">Prev</a> - <a href="#SliceElement_47">Next</a></td>
+																						   <td><b><font color='red'> &nbsp;try</font></b><br></td></tr>
+	<tr id="SliceElement_47"><th>4970:</th><td><a href="#SliceElement_46">Prev</a> - <a href="#SliceElement_48">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp;try</font></b><br></td></tr>
+	<tr><th>4971:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;// update field entry with the new refid</font><br></td></tr>
+	<tr><th>4972:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4973:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbf_open(scenariodb, fqe.scenariodbname, true);</font><br></td></tr>
+	<tr><th>4974:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;dbquery(scenariodb,</font><br></td></tr>
+	<tr><th>4975:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'"", "' +</font><br></td></tr>
+	<tr><th>4976:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;string(patientid) + '", "' +</font><br></td></tr>
+	<tr><th>4977:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;refimg.beam.fieldid + '"', 0, 0, irec);</font><br></td></tr>
+	<tr id="SliceElement_48"><th>4978:</th><td><a href="#SliceElement_47">Prev</a> - <a href="#SliceElement_49">Next</a></td>
+																						   <td><b><font color='red'> &nbsp; &nbsp; &nbsp;if (irec &gt;= 0) then</font></b><br></td></tr>
+	<tr><th>4979:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;begin</font><br></td></tr>
+	<tr><th>4980:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp;dbf_read(scenrec, scenariodb, irec);</font><br></td></tr>
+	<tr><th>4981:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp; &nbsp;field_setstring(scenrec, format('%0.2d', [refimg.beam.refid]),5);</font><br></td></tr>
+	<tr id="SliceElement_49"><th>4982:</th><td><a href="#SliceElement_48">Prev</a> - <a href="#SliceElement_50">Next</a></td>
+																						   <td><b><font color='green'> &nbsp; &nbsp; &nbsp; &nbsp;dbf_write(scenrec, scenariodb, irec);</font></b><br></td></tr>
+	<tr><th>4983:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4984:</th><td>&nbsp;</td><td><font size="3" color="grey"></font><br></td></tr>
+	<tr><th>4985:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;result := true;</font><br></td></tr>
+	<tr><th>4986:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;except</font><br></td></tr>
+	<tr><th>4987:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp; &nbsp;ferrors.add('could not append record to database ' + fqe.referencdbname + ' after writing drr for field ' + refimg.beam.fieldid + ' and patient ' + string(fpatientid));</font><br></td></tr>
+	<tr><th>4988:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;end;</font><br></td></tr>
+	<tr><th>4989:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;finally</font><br></td></tr>
+	<tr><th>4990:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp; &nbsp;dbf_close(scenariodb);</font><br></td></tr>
+	<tr><th>4991:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;end;</font><br></td></tr>
+	<tr><th>4992:</th><td>&nbsp;</td><td><font size="3" color="grey"> &nbsp;scenrec.free;</font><br></td></tr>
+	<tr><th>4993:</th><td>&nbsp;</td><td><font size="3" color="grey">end;</font><br></td></tr>
+</table></html>

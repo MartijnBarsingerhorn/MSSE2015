@@ -1,0 +1,44 @@
+success: function CRC16(s: string): UInt16;
+var
+  m_CrcTable: array[0..255] of Word;
+
+  procedure CCRCInit();
+  var
+    counter: Integer;
+    c: ShortInt; // signed 8-bit integer
+  begin
+    for counter := 0 to 256-1 do
+    begin
+      c := ShortInt(counter xor (counter shl 4));
+      m_CrcTable[counter] := Word((Integer(c) shl 8) xor (Integer(c) shl 3) xor (Integer(c) shr 4));
+    end;
+  end;
+
+  procedure CCRCUpdateCrc(buffer: PByte; var crc: WORD);
+  begin
+    crc := (crc shr 8) xor m_CrcTable[buffer^ xor (crc and 255)];
+  end;
+
+  function CCRCComputeCrc(buffer: PByte; length: DWORD): Word;
+  var
+    crc: WORD;      // unsigned 16-bit integer
+    counter: DWORD; // unsigned 32-bit integer
+  begin
+    crc := 0;
+
+    for counter := 0 to length-1 do
+    begin
+      CCRCUpdateCrc(buffer, crc);
+      Inc(buffer);
+    end;
+
+    Result := crc;
+  end;
+
+var
+  Ansi: AnsiString;
+begin
+  CCRCInit;
+  Ansi := AnsiString(s);
+  Result := CCRCComputeCrc(PByte(PAnsiChar(Ansi)), Length(Ansi))
+end;

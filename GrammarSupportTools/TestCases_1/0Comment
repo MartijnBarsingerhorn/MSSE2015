@@ -1,0 +1,10 @@
+fail:	"(* The quick brown fox jumps over the lazy *) dog"
+fail:   "(* The quick brown fox jumps over the lazy dog"
+fail:   "{ The quick brown fox jumps over } the lazy dog"
+fail:   "{ The quick brown fox jumps over the lazy dog" 
+success:  "// The quick brown fox jumps over the lazy dog."
+success:  "// )(*&^%$#@!{(*"
+success:  "(* The quick brown fox jumps over the lazy dog. *)"
+success:  "(* (* (* * ) { } The quick brown fox jumps over the lazy dog *)"
+success:  "{ The quick brown fox jumps over the lazy dog }"
+success:  "{ { (* *) The quick brown fox }

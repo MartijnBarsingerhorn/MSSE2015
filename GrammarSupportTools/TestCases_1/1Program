@@ -1,0 +1,25 @@
+success:    "program TestProgram(wudde); 
+             uses a,b,c,d;
+             
+             const
+                a : Integer = 10;
+                b = 15;
+             
+             type
+                TB = record
+                        a,b: Integer;
+                        c : String;end;
+             
+             var 
+                a : Integer;
+             
+             procedure a(); 
+             var 
+                a: Integer; 
+             begin 
+                a:=a+1; 
+             end; 
+             
+             begin 
+                a(b*3+2,c); 
+             end."

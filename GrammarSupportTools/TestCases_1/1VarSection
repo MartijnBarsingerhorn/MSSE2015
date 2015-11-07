@@ -1,0 +1,4 @@
+success: "var a,b : Integer;"
+success: "var a,b : Integer;  c,d: Cardinal;"
+success: "var a,b : Integer;"
+success: "var a,b : Integer;  c,d: Cardinal;" 

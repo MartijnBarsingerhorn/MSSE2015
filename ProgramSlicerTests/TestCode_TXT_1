@@ -1,0 +1,395 @@
+unit Winapi.Isapi;
+
+{$ALIGN ON}
+{$MINENUMSIZE 4}
+{$WEAKPACKAGEUNIT}
+
+interface
+
+uses Winapi.Windows;
+
+const
+  HSE_VERSION_MAJOR         =   1;      // major version of this spec
+  {$EXTERNALSYM HSE_VERSION_MAJOR}
+  HSE_VERSION_MINOR         =   0;      // minor version of this spec
+  {$EXTERNALSYM HSE_VERSION_MINOR}
+  HSE_LOG_BUFFER_LEN        =  80;
+  {$EXTERNALSYM HSE_LOG_BUFFER_LEN}
+  HSE_MAX_EXT_DLL_NAME_LEN  = 256;
+  {$EXTERNALSYM HSE_MAX_EXT_DLL_NAME_LEN}
+
+type
+  HCONN = THandle;
+  {$EXTERNALSYM HCONN}
+
+// the following are the status codes returned by the Extension DLL
+
+const
+  HSE_STATUS_SUCCESS                      = 1;
+  {$EXTERNALSYM HSE_STATUS_SUCCESS}
+  HSE_STATUS_SUCCESS_AND_KEEP_CONN        = 2;
+  {$EXTERNALSYM HSE_STATUS_SUCCESS_AND_KEEP_CONN}
+  HSE_STATUS_PENDING                      = 3;
+  {$EXTERNALSYM HSE_STATUS_PENDING}
+  HSE_STATUS_ERROR                        = 4;
+  {$EXTERNALSYM HSE_STATUS_ERROR}
+
+// The following are the values to request services with the ServerSupportFunction.
+//  Values from 0 to 1000 are reserved for future versions of the interface
+
+  HSE_REQ_BASE                             = 0;
+  HSE_REQ_SEND_URL_REDIRECT_RESP           = ( HSE_REQ_BASE + 1 );
+  HSE_REQ_SEND_URL                         = ( HSE_REQ_BASE + 2 );
+  HSE_REQ_SEND_RESPONSE_HEADER             = ( HSE_REQ_BASE + 3 );
+  HSE_REQ_DONE_WITH_SESSION                = ( HSE_REQ_BASE + 4 );
+  HSE_REQ_END_RESERVED                     = 1000;
+
+//
+//  These are Microsoft specific extensions
+//
+
+  HSE_REQ_MAP_URL_TO_PATH                  = (HSE_REQ_END_RESERVED+1);
+  HSE_REQ_GET_SSPI_INFO                    = (HSE_REQ_END_RESERVED+2);
+
+//
+// passed to GetExtensionVersion
+//
+
+type
+  PHSE_VERSION_INFO = ^HSE_VERSION_INFO;
+  HSE_VERSION_INFO = record
+    dwExtensionVersion: DWORD;
+    lpszExtensionDesc: array [0..HSE_MAX_EXT_DLL_NAME_LEN-1] of AnsiChar;
+  end;
+  THSE_VERSION_INFO = HSE_VERSION_INFO;
+  LPHSE_VERSION_INFO = PHSE_VERSION_INFO;
+
+type
+  TGetServerVariableProc = function ( hConn: HCONN;
+                                      VariableName: PAnsiChar;
+                                      Buffer: Pointer;
+                                      var Size: DWORD ): BOOL stdcall;
+
+  TWriteClientProc = function ( ConnID: HCONN;
+                                Buffer: Pointer;
+                                var Bytes: DWORD;
+                                dwReserved: DWORD ): BOOL stdcall;
+
+  TReadClientProc  = function ( ConnID: HCONN;
+                                Buffer: Pointer;
+                                var Size: DWORD ): BOOL stdcall;
+
+  TServerSupportFunctionProc = function ( hConn: HCONN;
+                                          HSERRequest: DWORD;
+                                          Buffer: Pointer;
+                                          var Size: DWORD;
+                                          var DataType: DWORD ): BOOL stdcall;
+
+//
+// passed to extension procedure on a new request
+//
+type
+
+  PEXTENSION_CONTROL_BLOCK = ^TEXTENSION_CONTROL_BLOCK;
+  TEXTENSION_CONTROL_BLOCK = record
+    cbSize: DWORD;                    // size of this struct.
+    dwVersion: DWORD;                 // version info of this spec
+    ConnID: HCONN;                    // Context number not to be modified!
+    dwHttpStatusCode: DWORD;          // HTTP Status code
+             // null terminated log info specific to this Extension DLL
+    lpszLogData: array [0..HSE_LOG_BUFFER_LEN-1] of AnsiChar;
+    lpszMethod: PAnsiChar;                // REQUEST_METHOD
+    lpszQueryString: PAnsiChar;           // QUERY_STRING
+    lpszPathInfo: PAnsiChar;              // PATH_INFO
+    lpszPathTranslated: PAnsiChar;        // PATH_TRANSLATED
+    cbTotalBytes: DWORD;              // Total bytes indicated from client
+    cbAvailable: DWORD;               // Available number of bytes
+    lpbData: Pointer;                 // pointer to cbAvailable bytes
+    lpszContentType: PAnsiChar;           // Content type of client data
+
+    GetServerVariable: TGetServerVariableProc;
+    WriteClient: TWriteClientProc;
+    ReadClient: TReadClientProc;
+    ServerSupportFunction: TServerSupportFunctionProc;
+  end;
+
+//
+//  these are the prototypes that must be exported from the extension DLL
+//
+
+//  function GetExtensionVersion( var Ver: THSE_VERSION_INFO ): BOOL; stdcall;
+//  function HttpExtensionProc( var ECB: TEXTENSION_CONTROL_BLOCK ): DWORD; stdcall;
+
+// the following type declarations is for the server side
+
+// typedef BOOL  (WINAPI * PFN_GETEXTENSIONVERSION)( HSE_VERSION_INFO  *pVer );
+// typedef DWORD (WINAPI * PFN_HTTPEXTENSIONPROC )( EXTENSION_CONTROL_BLOCK *pECB );
+
+implementation
+
+end.
+
+
+					unit TestUnit;
+					
+					interface
+					
+					type
+					
+				
+					  classA = class
+					    public
+					      function Fa(pa, pb : Cardinal): Cardinal;
+					      function Fb(pa, pb : Cardinal): Cardinal;
+					      function Fc(pa, pb : Cardinal): Cardinal;
+					      function Fd(pa, pb : Cardinal): Cardinal;					      
+					    public
+					      Da : Cardinal;
+					      Db : Cardinal;					      
+					      Dc : Cardinal;					      
+					      Dd : Cardinal;					
+					  end;
+					
+					  classB = class
+					    public
+					      function Fa(pa, pb : Cardinal): Cardinal;
+					      function Fb(pa, pb : Cardinal): Cardinal;
+					      function Fc(pa, pb : Cardinal): Cardinal;
+					      function Fd(pa, pb : Cardinal): Cardinal;					      
+					    public
+					      Da : Cardinal;
+					      Db : Cardinal;					      
+					      Dc : Cardinal;					      
+					      Dd : Cardinal;
+					  end;
+
+					
+					implementation
+					
+					type
+					
+					  classC = class
+					    public
+					      function Fa(pa, pb : Cardinal): Cardinal;
+					      function Fb(pa, pb : Cardinal): Cardinal;
+					      function Fc(pa, pb : Cardinal): Cardinal;
+					      function Fd(pa, pb : Cardinal): Cardinal;					      
+					    public
+					      Da : Cardinal;
+					      Db : Cardinal;					      
+					      Dc : Cardinal;					      
+					      Dd : Cardinal;
+					  end;
+					  
+					  classD = class
+					    public
+					      function Fa(pa, pb : Cardinal): Cardinal;
+					      function Fb(pa, pb, pc : Cardinal): Cardinal;
+					      function Fc(pa, pb : Cardinal): Cardinal;
+					      function Fd(pa, pb : Cardinal): Cardinal;					      
+					    public
+					      Da : Cardinal;
+					      Db : Cardinal;					      
+					      Dc : Cardinal;					      
+					      Dd : Cardinal;
+					  end;					  
+					
+					var
+					  g_Data : classD;
+					  g_Card : Cardinal;
+					
+				  procedure DoGlobalThings();
+				  begin
+				  	g_Data.Dd := Inc(g_Data.Dc, 3); 
+				  	g_Card := g_Card + 10;
+				  end;	
+
+				  procedure DoGlobalThings2();
+				  begin
+				  	g_Data.Dd := Inc(g_Data.Dc, 3); 
+				  	g_Card := g_Card + 10;
+				  end;	
+				  
+				  procedure DoGlobalThings3;
+				  begin
+				  	g_Card := g_Card + 1;
+				  end;
+				  
+				  procedure DoGlobalThings3(a,b,c : Cardinal);
+				  begin
+				  	g_Card := g_Card + 2;
+				  end;
+				  
+					function itos(len, value : integer) : ansistring;
+				 	var
+						 i : integer;
+						 maxval : integer;
+				 	begin
+					 	 // invalid is '*' with len length
+				 			result := '';
+					 		for i := 1 to min(len, 5) do result := result +'*';
+					 	
+					 	 if (len >= 5) then
+					 	 begin
+					 	   len    := 5;
+					 	   maxval := 0;
+					 	 end
+					 	 else
+					 	 begin
+					 	   maxval := 1;
+					 	   for i := 1 to len do maxval := maxval * 208;
+					 	
+					 	   if (value < -maxval/2) or (value >= maxval/2) then
+				 	   	   begin
+					 	     	exit;
+					 	   end;
+					 	 end;
+					 	
+					 	 if (value = maxint) then
+				 		 begin                { invalid is set to maxint }
+					 		   exit;
+				 	 	 end;
+				 	
+					 	 if (value < 0) then value := value + maxval;
+					 	
+						 for i := len downto 1 do
+						 begin
+					     	result[i]  := ansichar(chr( (value mod 208) + ord('0') ));
+						    value := value div 208;
+						 end;
+					 	
+					 	 setlength(result, len);
+				 	end;				  
+				  
+					function Nstrings (s : string) : integer;
+					var
+					  i : integer;
+					begin
+					  Result := 1;
+					  for i := 1 to length(s) do
+					    if s[i]=',' then INC(Result);
+					end;				  				  
+					
+			      function classA.Fa(pa, pb : Cardinal): Cardinal;
+			      begin
+			      	DoGlobalThings2();
+			      	DoGlobalThings3;
+			      	while (g_Card = 10) do
+			      	begin
+			      		g_Card := g_Card + 10;
+				      	g_Data.Fc(10, DoGlobalThings());
+				    end;
+			      end;
+			      
+			      function classA.Fb(pa, pb : Cardinal): Cardinal;
+			      begin
+			      	Fa(11, 12);
+			      end;
+			      
+			      function classA.Fc(pa, pb : Cardinal): Cardinal;
+			      begin
+			      	Fa(13, 14)
+			      end;
+			      
+			      function classA.Fd(pa, pb : Cardinal): Cardinal;	
+			      begin
+			      	Fa(15,16);
+			      end;
+			      
+			      
+			      function classB.Fa(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classB.Fb(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classB.Fc(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classB.Fd(pa, pb : Cardinal): Cardinal;	
+			      begin
+			      end;
+			      
+			      
+			      function classC.Fa(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classC.Fb(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classC.Fc(pa, pb : Cardinal): Cardinal;
+			      begin
+			      end;
+			      
+			      function classC.vFd(pa, pb : Cardinal): Cardinal;	
+			      begin
+			      end;
+			      
+			      
+			      function classD.Fa(pa, pb : Cardinal): Cardinal;
+			      var
+			      	i : Cardinal;
+			      begin
+			      	DA := 10;
+			      	DB := 20;
+			      	
+			      	for i:=0 to 10 do
+			      	begin
+			      		pa := pa + i;
+			      		i := i + 1;
+			      	end;
+			      	
+			      	result := pa * 2;
+			      end;
+			      
+			      function classD.Fb(pa, pb, pc : Cardinal): Cardinal;
+			      begin
+			      	if (pa =10) then
+			      	begin
+			      		pa := pa + pb;		// *
+			      		
+			      		if (pb = 10) then
+			      		begin
+			      			pb := pb + 10;
+			      		end
+			      		else
+			      		begin
+			      			pa := pa * 2;
+			      		end;
+			      	end
+			      	else
+			      		pa := pa + pb * 2;
+			      		
+			      	result := pa;
+			      end;
+			      
+			      function classD.Fc(pa, pb : Cardinal): Cardinal;
+			      var
+			      	pc : Cardinal;
+			      	pd : AnsiString;
+			      begin
+			      	pb := itos(pa, pb);
+			      	
+			      	
+			      	pa := Fb(pa,pb,pc);
+			      	pa := Fa(pa,pb);
+			      	pb := Fb(pa,pb,pc);
+			      	
+			      	Fa() + Fd(pa,Da);				// *
+			      end;
+			      
+			      function classD.Fd(pa, pb : Cardinal): Cardinal;
+			      var
+			      	t : Cardinal;						      					      					      
+			      begin
+			      	pa := pa * 2;			// *
+			      	pb := pa + 10; 			
+			      	t  := 10 + pa;			// *
+			      end;
+				
+			end.

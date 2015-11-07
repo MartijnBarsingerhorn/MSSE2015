@@ -1,0 +1,4 @@
+success: try except end;
+success: try a:=a+1; except end;
+success: try a:=a+1; except a:=a+1; end;
+success: "if a=4 then if b=5 then a:=5;"

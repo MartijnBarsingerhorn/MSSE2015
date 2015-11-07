@@ -1,0 +1,19 @@
+success:	"try blah(); except on exception do begin blah2(); end; end"
+success:	"try blah() except on exception do begin blah2(); end; end"
+success:	"if a=4 then if b=4 then a:=5"
+success:	"if a=1 then 
+			if b=1 then 
+				for i:=1 to 10 do 
+					if a=3 then 
+						a:=4 
+					else 
+						b:=2 
+			else 
+				c:=3 
+		else 
+			d:=4"
+success:	"if a=1 then
+			if b=1 then
+				b:=1
+			else
+				c:=1"

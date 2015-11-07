@@ -1,0 +1,4 @@
+success: "record public a : Integer; end"
+success: "record a : Integer; end"
+success: "record public end"
+success: "record end"
